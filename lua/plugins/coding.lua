@@ -1,0 +1,115 @@
+return {
+  {
+    "tpope/vim-fugitive",
+    dependencies = {
+      -- GitHub extensions for fugitive
+      "tpope/vim-rhubarb",
+    },
+    lazy = false,
+    keys = {
+      { "<leader>gs", "<cmd>:Git<CR>" },
+      { "<leader>gb", "<cmd>:.GBrowse<CR>" },
+    },
+  },
+
+  -- automatically adjust `shiftwidth` and `expandtab` heuristically
+  "tpope/vim-sleuth",
+
+  {
+    "kylechui/nvim-surround",
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup()
+    end,
+  },
+
+  {
+    "numToStr/Comment.nvim",
+    opts = {},
+    lazy = false,
+  },
+
+  {
+    "L3MON4D3/LuaSnip",
+    dependencies = {
+      -- preconfigured snippets for different languages
+      "rafamadriz/friendly-snippets",
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+      end,
+    },
+  },
+
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      -- completion sources for LSP, buffers, paths and luasnip
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "saadparwaiz1/cmp_luasnip",
+    },
+    opts = function()
+      local cmp = require "cmp"
+      local luasnip = require "luasnip"
+      return {
+        snippet = {
+          expand = function(args)
+            luasnip.lsp_expand(args.body)
+          end,
+        },
+        completion = {
+          completeopt = "menu,menuone,noinsert",
+        },
+        mapping = cmp.mapping.preset.insert {
+          ["<C-n>"] = cmp.mapping.select_next_item(),
+          ["<C-p>"] = cmp.mapping.select_prev_item(),
+          ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+          ["<C-f>"] = cmp.mapping.scroll_docs(4),
+          ["<C-Space>"] = cmp.mapping.complete {},
+          ["<CR>"] = cmp.mapping.confirm {
+            behavior = cmp.ConfirmBehavior.Replace,
+            select = true,
+          },
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif luasnip.expand_or_locally_jumpable() then
+              luasnip.expand_or_jump()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif luasnip.locally_jumpable(-1) then
+              luasnip.jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+        },
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "luasnip" },
+          { name = "path" },
+        }, {
+          { name = "buffer" },
+        }),
+      }
+    end,
+  },
+
+  {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+      },
+    },
+  },
+}
