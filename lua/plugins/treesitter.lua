@@ -9,9 +9,14 @@ return {
     },
     cmd = { "TSUpdateSync", "TSUpdate", "TSInstall" },
     opts = {
-      ensure_installed = { "c", "go", "html", "json", "lua", "markdown", "vim", "vimdoc", "yaml" },
+      ensure_installed = { "c", "gdscript", "go", "html", "json", "lua", "markdown", "vim", "vimdoc", "yaml" },
       highlight = { enable = true },
-      indent = { enable = true },
+      indent = {
+        enable = true,
+        disable = {
+          "gdscript", -- not supported by treesitter
+        },
+      },
       incremental_selection = {
         enable = true,
         keymaps = {

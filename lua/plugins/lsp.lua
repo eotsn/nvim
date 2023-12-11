@@ -71,6 +71,16 @@ return {
           }
         end,
       }
+
+      require("lspconfig").gdscript.setup {
+        cmd = { "ncat", "127.0.0.1", "6005" },
+        capabilities = capabilities,
+        on_attach = on_attach,
+        flags = {
+          debounce_text_changes = 150,
+        },
+        settings = {},
+      }
     end,
   },
 }

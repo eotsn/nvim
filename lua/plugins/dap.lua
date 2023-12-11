@@ -56,5 +56,23 @@ return {
       { "<leader>dt", function() require("dap").terminate() end, desc = "Terminate" },
       { "<leader>dw", function() require("dap.ui.widgets").hover() end, desc = "Widgets" },
     },
+
+    config = function()
+      require("dap").adapters.godot = {
+        type = "server",
+        host = "127.0.0.1",
+        port = 6006,
+      }
+
+      require("dap").configurations.gdscript = {
+        {
+          type = "godot",
+          name = "Launch Scene",
+          request = "launch",
+          project = "${workspaceFolder}",
+          launch_scene = true,
+        },
+      }
+    end,
   },
 }
