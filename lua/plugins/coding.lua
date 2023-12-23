@@ -89,4 +89,24 @@ return {
       },
     },
   },
+
+  -- Simple, unified, single tabpage interface that lets you easily review all
+  -- changed files for any git rev.
+  {
+    'sindrets/diffview.nvim',
+    keys = {
+      { '<C-g>', '<cmd>DiffviewOpen<CR>', desc = 'Open diff view' },
+    },
+    opts = {
+      use_icons = false,
+      keymaps = {
+        view = {
+          ['gq'] = '<cmd>DiffviewClose<CR>',
+        },
+        file_panel = {
+          ['gq'] = '<cmd>DiffviewClose<CR>',
+        },
+      },
+    },
+  },
 }
