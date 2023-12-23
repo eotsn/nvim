@@ -20,17 +20,6 @@ return {
       opts = {},
     },
 
-    -- Integrate with the `which-key` popup menu
-    {
-      'folke/which-key.nvim',
-      optional = true,
-      opts = {
-        defaults = {
-          ['<leader>d'] = { name = '+debug' },
-        },
-      },
-    },
-
     -- Debugger extension for go
     {
       'leoluz/nvim-dap-go',
