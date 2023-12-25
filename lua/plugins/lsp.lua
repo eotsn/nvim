@@ -29,7 +29,7 @@ return {
 
       local on_attach = function()
         vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action)
-        vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format)
+        -- vim.keymap.set('n', '<leader>cf', vim.lsp.buf.format)
         vim.keymap.set('n', '<leader>cr', vim.lsp.buf.rename)
 
         vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<CR>')
