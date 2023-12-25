@@ -62,6 +62,7 @@ return {
         ['<leader>g'] = { name = '+git' },
         ['<leader>gh'] = { name = '+hunks' },
         ['<leader>s'] = { name = '+search' },
+        ['<leader>x'] = { name = '+diagnostics/quickfix' },
       },
     },
     config = function(_, opts)
@@ -102,6 +103,22 @@ return {
         end, { expr = true, buffer = bufnr, desc = 'Jump to previous hunk' })
         -- stylua: ignore end
       end,
+    },
+  },
+
+  -- Better diagnostics list and others
+  {
+    'folke/trouble.nvim',
+    cmd = { 'TroubleToggle', 'Trouble' },
+    opts = {
+      icons = false,
+      use_diagnostic_signs = true,
+    },
+    keys = {
+      { '<leader>xx', '<cmd>TroubleToggle document_diagnostics<CR>', desc = 'Document Diagnostics (Trouble)' },
+      { '<leader>xX', '<cmd>TroubleToggle workspace_diagnostics<CR>', desc = 'Workspace Diagnostics (Trouble)' },
+      { '<leader>xL', '<cmd>TroubleToggle loclist<CR>', desc = 'Location List (Trouble)' },
+      { '<leader>xQ', '<cmd>TroubleToggle quickfix<CR>', desc = 'Quickfix List (Trouble)' },
     },
   },
 
