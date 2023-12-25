@@ -90,6 +90,35 @@ return {
     },
   },
 
+  -- Comments
+  {
+    'echasnovski/mini.comment',
+    event = 'VeryLazy',
+    version = false,
+    config = function()
+      require('mini.comment').setup()
+    end,
+  },
+
+  --Fast and feature-rich surround actions
+  {
+    'echasnovski/mini.surround',
+    version = false,
+    config = function()
+      require('mini.surround').setup()
+    end,
+  },
+
+  -- Better text-objects
+  {
+    'echasnovski/mini.ai',
+    event = 'VeryLazy',
+    version = false,
+    config = function()
+      require('mini.ai').setup()
+    end,
+  },
+
   -- Simple, unified, single tabpage interface that lets you easily review all
   -- changed files for any git rev.
   {
