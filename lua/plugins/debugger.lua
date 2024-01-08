@@ -15,13 +15,14 @@ return {
             desc = "Toggle DAP UI",
           },
         },
+        config = true,
       },
 
       -- Virtual text for the debugger
-      "theHamsta/nvim-dap-virtual-text",
+      { "theHamsta/nvim-dap-virtual-text", config = true },
 
       -- Debugger extension for go
-      "leoluz/nvim-dap-go",
+      { "leoluz/nvim-dap-go", config = true },
     },
     -- stylua: ignore
     keys = {
