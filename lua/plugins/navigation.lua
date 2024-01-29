@@ -24,16 +24,24 @@ return {
       { "<leader>sr", "<Cmd>Telescope resume<CR>", desc = "Resume search" },
       { "<leader>sw", "<Cmd>Telescope grep_string<CR>", desc = "Search for word under cursor" },
     },
-    opts = {
-      defaults = {
-        preview = {
-          hide_on_startup = true,
-        },
-      },
-    },
-    config = function(_, opts)
+    config = function()
       local telescope = require("telescope")
-      telescope.setup(opts)
+      local action_layout = require("telescope.actions.layout")
+      telescope.setup({
+        defaults = {
+          mappings = {
+            n = {
+              ["<M-p>"] = action_layout.toggle_preview,
+            },
+            i = {
+              ["<M-p>"] = action_layout.toggle_preview,
+            },
+          },
+          preview = {
+            hide_on_startup = true,
+          },
+        },
+      })
       -- Enable telescope fzf native, if installed
       pcall(telescope.load_extension, "fzf")
     end,
