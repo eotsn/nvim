@@ -117,6 +117,9 @@ return {
     },
   },
 
+  -- Highlight color codes in buffers
+  "norcalli/nvim-colorizer.lua",
+
   -- Obfuscate matched patterns in defined filetypes
   { "laytan/cloak.nvim", config = true },
 }
