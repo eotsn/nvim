@@ -109,6 +109,14 @@ return {
     end,
   },
 
+  -- Move faster with unique f/F indicators
+  {
+    "jinh0/eyeliner.nvim",
+    opts = {
+      highlight_on_key = true,
+    },
+  },
+
   -- Obfuscate matched patterns in defined filetypes
   { "laytan/cloak.nvim", config = true },
 }
