@@ -15,6 +15,9 @@ return {
   -- Automatically adjust `shiftwidth` and `expandtab` heuristically
   "tpope/vim-sleuth",
 
+  -- Combine with netrw to create a delicious salad dressing
+  "tpope/vim-vinegar",
+
   -- Highlight git diffs
   {
 
