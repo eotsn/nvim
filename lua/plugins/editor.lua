@@ -125,4 +125,13 @@ return {
 
   -- IDE-like breadcrumbs for Neovim
   "Bekaboo/dropbar.nvim",
+
+  -- Fast and configurable Neovim statusline
+  {
+    "nvim-lualine/lualine.nvim",
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    config = function()
+      require("lualine").setup({})
+    end,
+  }
 }
