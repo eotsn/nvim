@@ -25,3 +25,9 @@ map("x", "<leader>p", [["_dP]])
 -- Yank into system clipboard
 map({ "n", "v" }, "<leader>y", [["+y]])
 map("n", "<leader>Y", [["+Y]])
+
+-- Quickfix list navigation
+map("n", "<C-j>", "<cmd>cnext<CR>zz")
+map("n", "<C-k>", "<cmd>cprev<CR>zz")
+map("n", "<leader>j", "<cmd>lnext<CR>zz")
+map("n", "<leader>k", "<cmd>lprev<CR>zz")
