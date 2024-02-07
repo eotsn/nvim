@@ -122,4 +122,7 @@ return {
 
   -- Obfuscate matched patterns in defined filetypes
   { "laytan/cloak.nvim", config = true },
+
+  -- IDE-like breadcrumbs for Neovim
+  "Bekaboo/dropbar.nvim",
 }
