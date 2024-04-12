@@ -32,14 +32,6 @@ return {
           lsp_zero.default_setup,
         },
       })
-
-      require("lspconfig").gdscript.setup({
-        -- On Windows we use `ncat` instead of the default
-        cmd = { "ncat", "127.0.0.1", "6005" },
-        flags = {
-          debounce_text_changes = 150,
-        },
-      })
     end,
   },
 }
