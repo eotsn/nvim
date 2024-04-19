@@ -29,6 +29,10 @@ return {
       local action_layout = require("telescope.actions.layout")
       telescope.setup({
         defaults = {
+          layout_config = {
+            width = 0.9,
+            preview_width = 0.6,
+          },
           mappings = {
             n = {
               ["<M-p>"] = action_layout.toggle_preview,
