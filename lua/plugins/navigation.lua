@@ -18,11 +18,12 @@ return {
     },
     cmd = "Telescope",
     keys = {
-      { "<leader>ff", "<Cmd>Telescope find_files<CR>", desc = "Find files" },
+      { "<leader>sb", "<Cmd>Telescope buffers<CR>", desc = "Search buffers" },
+      { "<leader>sf", "<Cmd>Telescope find_files<CR>", desc = "Search files" },
       { "<leader>sg", "<Cmd>Telescope live_grep<CR>", desc = "Search by grep" },
       { "<leader>sh", "<Cmd>Telescope help_tags<CR>", desc = "Search help tags" },
-      { "<leader>sr", "<Cmd>Telescope resume<CR>", desc = "Resume search" },
-      { "<leader>sw", "<Cmd>Telescope grep_string<CR>", desc = "Search for word under cursor" },
+      { "<leader>sr", "<Cmd>Telescope resume<CR>", desc = "Search resume" },
+      { "<leader>sw", "<Cmd>Telescope grep_string<CR>", desc = "Search current word" },
     },
     config = function()
       local telescope = require("telescope")
