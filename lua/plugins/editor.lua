@@ -55,6 +55,7 @@ return {
           return "<Ignore>"
         end, { expr = true, desc = "Jump to previous hunk" })
         map({ "n", "v" }, "<leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
+        map({ "n", "v" }, "<leader>hr", gs.reset_hunk, { desc = "Reset hunk" })
       end,
     },
   },
