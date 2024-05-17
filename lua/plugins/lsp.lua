@@ -16,22 +16,22 @@ return {
       "folke/neodev.nvim",
     },
     config = function()
-      local lsp_zero = require("lsp-zero")
+      local lsp_zero = require "lsp-zero"
 
       lsp_zero.on_attach(function(_, bufnr)
-        lsp_zero.default_keymaps({ buffer = bufnr })
+        lsp_zero.default_keymaps { buffer = bufnr }
       end)
 
       -- IMPORTANT: make sure to setup neodev BEFORE lspconfig
       require("neodev").setup()
 
-      require("mason").setup({})
-      require("mason-lspconfig").setup({
+      require("mason").setup {}
+      require("mason-lspconfig").setup {
         ensure_installed = { "clangd", "gopls", "lua_ls" },
         handlers = {
           lsp_zero.default_setup,
         },
-      })
+      }
     end,
   },
 }

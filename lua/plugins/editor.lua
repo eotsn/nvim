@@ -24,8 +24,8 @@ return {
     "lewis6991/gitsigns.nvim",
     opts = {
       signs = {
-        add = { text = '+' },
-        change = { text = '~' },
+        add = { text = "+" },
+        change = { text = "~" },
       },
       on_attach = function(bufnr)
         local gs = package.loaded.gitsigns
@@ -73,7 +73,7 @@ return {
         "]d",
         function()
           if require("trouble").is_open() then
-            require("trouble").next({ skip_groups = true, jump = true })
+            require("trouble").next { skip_groups = true, jump = true }
           else
             vim.diagnostic.goto_next()
           end
@@ -84,7 +84,7 @@ return {
         "[d",
         function()
           if require("trouble").is_open() then
-            require("trouble").previous({ skip_groups = true, jump = true })
+            require("trouble").previous { skip_groups = true, jump = true }
           else
             vim.diagnostic.goto_prev()
           end

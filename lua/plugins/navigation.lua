@@ -1,4 +1,4 @@
-local is_windows = jit.os:find("Windows")
+local is_windows = jit.os:find "Windows"
 
 return {
   -- Fuzzy finder (files, lsp, etc)
@@ -25,9 +25,9 @@ return {
       { "<leader>sw", "<Cmd>Telescope grep_string<CR>", desc = "Search current word" },
     },
     config = function()
-      local telescope = require("telescope")
-      local action_layout = require("telescope.actions.layout")
-      telescope.setup({
+      local telescope = require "telescope"
+      local action_layout = require "telescope.actions.layout"
+      telescope.setup {
         defaults = {
           layout_config = {
             width = 0.9,
@@ -45,7 +45,7 @@ return {
             hide_on_startup = true,
           },
         },
-      })
+      }
       -- Enable telescope fzf native, if installed
       pcall(telescope.load_extension, "fzf")
     end,
@@ -57,8 +57,8 @@ return {
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" },
     config = function()
-      local harpoon = require("harpoon")
-      harpoon:setup({})
+      local harpoon = require "harpoon"
+      harpoon:setup {}
 
       -- stylua: ignore start
       vim.keymap.set("n", "<leader>A", function() harpoon:list():add() end, { desc = "Harpoon file" })

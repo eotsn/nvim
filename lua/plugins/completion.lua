@@ -2,7 +2,7 @@ return {
   -- Snippets!
   {
     "L3MON4D3/LuaSnip",
-    build = (not jit.os:find("Windows")) and "make install_jsregexp" or nil,
+    build = (not jit.os:find "Windows") and "make install_jsregexp" or nil,
     dependencies = {
       -- Preconfigured snippets for different languages
       "rafamadriz/friendly-snippets",
@@ -25,8 +25,8 @@ return {
       "saadparwaiz1/cmp_luasnip",
     },
     opts = function()
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
+      local cmp = require "cmp"
+      local luasnip = require "luasnip"
       return {
         completion = {
           completeopt = "menu,menuone,noselect",
