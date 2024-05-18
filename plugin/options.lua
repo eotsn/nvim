@@ -39,6 +39,9 @@ opt.expandtab = true
 opt.ignorecase = true
 opt.smartcase = true
 
+-- Show partial off-screen search results
+opt.inccommand = "split"
+
 -- Enable true color (24-bit) support
 opt.termguicolors = true
 
