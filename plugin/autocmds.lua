@@ -4,9 +4,8 @@ end
 
 -- Highlight on yank
 vim.api.nvim_create_autocmd("TextYankPost", {
+  group = augroup "YankHighlight",
   callback = function()
     vim.highlight.on_yank()
   end,
-  group = augroup "YankHighlight",
-  pattern = "*",
 })
