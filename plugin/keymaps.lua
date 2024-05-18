@@ -1,7 +1,5 @@
 local map = vim.keymap.set
 
-map("n", "<leader>fe", vim.cmd.Ex, { desc = "File explorer (current dir)" })
-
 -- Remap up/down for dealing with word wrap
 map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
