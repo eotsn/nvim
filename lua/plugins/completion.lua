@@ -1,49 +1,43 @@
 return {
-  -- Snippets!
-  {
-    "L3MON4D3/LuaSnip",
-    build = (not jit.os:find "Windows") and "make install_jsregexp" or nil,
-    dependencies = {
-      -- Preconfigured snippets for different languages
-      "rafamadriz/friendly-snippets",
-      config = function()
-        require("luasnip.loaders.from_vscode").lazy_load()
-      end,
-    },
+  "hrsh7th/nvim-cmp",
+  event = "InsertEnter",
+  dependencies = {
+    "hrsh7th/cmp-nvim-lsp",
+    "hrsh7th/cmp-buffer",
+    "hrsh7th/cmp-path",
+    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
+    "saadparwaiz1/cmp_luasnip",
   },
+  config = function()
+    local cmp = require "cmp"
+    local luasnip = require "luasnip"
 
-  -- Autocompletion
-  {
-    "hrsh7th/nvim-cmp",
-    version = false, -- latest release is way to old
-    event = "InsertEnter",
-    dependencies = {
-      -- Additional completion sources
-      "hrsh7th/cmp-nvim-lsp",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "saadparwaiz1/cmp_luasnip",
-    },
-    opts = function()
-      local cmp = require "cmp"
-      local luasnip = require "luasnip"
-      return {
-        completion = {
-          completeopt = "menu,menuone,noselect",
-        },
-        snippet = {
-          expand = function(args)
-            luasnip.lsp_expand(args.body)
-          end,
-        },
-        sources = cmp.config.sources({
-          { name = "nvim_lsp" },
-          { name = "luasnip" },
-          { name = "path" },
-        }, {
-          { name = "buffer" },
-        }),
-      }
-    end,
-  },
+    cmp.setup {
+      sources = cmp.config.sources({
+        { name = "nvim_lsp" },
+        { name = "luasnip" },
+        { name = "path" },
+      }, {
+        { name = "buffer" },
+      }),
+
+      snippet = {
+        expand = function(args)
+          luasnip.lsp_expand(args.body)
+        end,
+      },
+    }
+
+    vim.keymap.set({ "i", "s" }, "<C-k>", function()
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      end
+    end, { silent = true })
+
+    vim.keymap.set({ "i", "s" }, "<C-j>", function()
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      end
+    end, { silent = true })
+  end,
 }
