@@ -1,8 +1,5 @@
 local opt = vim.opt
 
--- Ensure a better out-of-the-box completion experience
-opt.completeopt = "menu,menuone,noselect"
-
 -- Enable highlighting of the current line
 opt.cursorline = true
 

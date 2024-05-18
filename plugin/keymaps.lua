@@ -1,31 +1,31 @@
-local map = vim.keymap.set
+local set = vim.keymap.set
 
 -- Remap up/down for dealing with word wrap
-map({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
-map({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
+set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
+set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
 
 -- Move visual selection up/down
-map("v", "J", ":m '>+1<CR>gv=gv")
-map("v", "K", ":m '<-2<CR>gv=gv")
+set("v", "J", ":m '>+1<CR>gv=gv")
+set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Keep cursor at its current position when joining lines
-map("n", "J", "mzJ`z")
+set("n", "J", "mzJ`z")
 
 -- Keep cursor line centered while scrolling
-map("n", "<C-d>", "<C-d>zz")
-map("n", "<C-u>", "<C-u>zz")
-map("n", "n", "nzzzv")
-map("n", "N", "Nzzzv")
+set("n", "<C-d>", "<C-d>zz")
+set("n", "<C-u>", "<C-u>zz")
+set("n", "n", "nzzzv")
+set("n", "N", "Nzzzv")
 
 -- Paste without overwriting the unnamed (or default) register
-map("x", "<leader>p", [["_dP]])
+set("x", "<leader>p", [["_dP]])
 
 -- Yank into system clipboard
-map({ "n", "v" }, "<leader>y", [["+y]])
-map("n", "<leader>Y", [["+Y]])
+set({ "n", "v" }, "<leader>y", [["+y]])
+set("n", "<leader>Y", [["+Y]])
 
 -- Quickfix list navigation
-map("n", "<C-j>", "<CMD>cnext<CR>zz")
-map("n", "<C-k>", "<CMD>cprev<CR>zz")
-map("n", "<leader>j", "<CMD>lnext<CR>zz")
-map("n", "<leader>k", "<CMD>lprev<CR>zz")
+set("n", "<C-j>", "<CMD>cnext<CR>zz")
+set("n", "<C-k>", "<CMD>cprev<CR>zz")
+set("n", "<leader>j", "<CMD>lnext<CR>zz")
+set("n", "<leader>k", "<CMD>lprev<CR>zz")

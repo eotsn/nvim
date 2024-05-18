@@ -9,6 +9,8 @@ return {
     "saadparwaiz1/cmp_luasnip",
   },
   config = function()
+    vim.opt.completeopt = "menu,menuone,noselect"
+
     local cmp = require "cmp"
     local luasnip = require "luasnip"
 

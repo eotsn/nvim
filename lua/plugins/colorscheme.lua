@@ -8,6 +8,7 @@ return {
         highlights.Whitespace = { fg = colors.bg_dim }
       end,
     }
+
     vim.cmd.colorscheme "modus"
   end,
 }
