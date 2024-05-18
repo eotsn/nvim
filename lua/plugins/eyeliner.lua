@@ -1,7 +1,9 @@
--- Move faster with unique f/F indicators
 return {
   "jinh0/eyeliner.nvim",
-  opts = {
-    highlight_on_key = true,
-  },
+  config = function()
+    require("eyeliner").setup {
+      highlight_on_key = true,
+      dim = true,
+    }
+  end,
 }

@@ -1,39 +1,38 @@
 return {
   "lewis6991/gitsigns.nvim",
-  opts = {
-    signs = {
-      add = { text = "+" },
-      change = { text = "~" },
-    },
-    on_attach = function(bufnr)
-      local gs = package.loaded.gitsigns
+  config = function()
+    require("gitsigns").setup {
+      on_attach = function(bufnr)
+        local gitsigns = package.loaded.gitsigns
 
-      local function map(mode, lhs, rhs, opts)
-        opts = opts or {}
-        opts.buffer = bufnr
-        vim.keymap.set(mode, lhs, rhs, opts)
-      end
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
 
-      map({ "n", "v" }, "]c", function()
-        if vim.wo.diff then
-          return "]c"
-        end
-        vim.schedule(function()
-          gs.next_hunk()
+        map("n", "]c", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "]c", bang = true }
+          else
+            gitsigns.nav_hunk "next"
+          end
         end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Jump to next hunk" })
-      map({ "n", "v" }, "[c", function()
-        if vim.wo.diff then
-          return "[c"
-        end
-        vim.schedule(function()
-          gs.prev_hunk()
+
+        map("n", "[c", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "[c", bang = true }
+          else
+            gitsigns.nav_hunk "prev"
+          end
         end)
-        return "<Ignore>"
-      end, { expr = true, desc = "Jump to previous hunk" })
-      map({ "n", "v" }, "<leader>hp", gs.preview_hunk, { desc = "Preview hunk" })
-      map({ "n", "v" }, "<leader>hr", gs.reset_hunk, { desc = "Reset hunk" })
-    end,
-  },
+
+        map("n", "<leader>hp", gitsigns.preview_hunk)
+        map("n", "<leader>hr", gitsigns.reset_hunk)
+        map("n", "<leader>hb", function()
+          gitsigns.blame_line { full = true }
+        end)
+      end,
+    }
+  end,
 }

@@ -2,14 +2,11 @@ return {
   "zbirenbaum/copilot.lua",
   cmd = "Copilot",
   event = "InsertEnter",
-  opts = {
-    suggestion = {
-      auto_trigger = true,
-      keymap = {
-        -- This overlaps with the default completion keymap, but behaves
-        -- nicely
-        accept = "<C-y>",
+  config = function()
+    require("copilot").setup {
+      suggestion = {
+        keymap = { accept = "<C-y>" },
       },
-    },
-  },
+    }
+  end,
 }
