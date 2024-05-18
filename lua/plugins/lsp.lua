@@ -11,6 +11,9 @@ return {
     -- Useful LSP status updates
     { "j-hui/fidget.nvim", tag = "legacy", config = true },
 
+    -- Lightweight yet powerful formatter plugin for Neovim
+    "stevearc/conform.nvim",
+
     -- Additional lua configuration, makes nvim stuff amazing!
     "folke/neodev.nvim",
   },
@@ -30,5 +33,18 @@ return {
         lsp_zero.default_setup,
       },
     }
+
+    require("conform").setup {
+      formatters_by_ft = {
+        lua = { "stylua" },
+        go = { "goimports", "gofumpt" },
+      },
+    }
+
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      callback = function(args)
+        require("conform").format { bufnr = args.buf }
+      end,
+    })
   end,
 }
