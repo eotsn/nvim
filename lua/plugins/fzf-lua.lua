@@ -8,6 +8,7 @@ return {
         split = "belowright new",
         preview = { hidden = "hidden" },
       },
+      grep = { rg_glob = true },
     }
 
     vim.keymap.set("n", "<leader>sf", fzf.files)
