@@ -1,5 +1,7 @@
 local opt = vim.opt
 
+opt.colorcolumn = "100"
+
 -- Enable highlighting of the current line
 opt.cursorline = true
 
