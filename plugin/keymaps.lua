@@ -1,5 +1,7 @@
 local set = vim.keymap.set
 
+set("n", "<C-f>", "<CMD>silent !tmux neww tmux-sessionizer<CR>")
+
 -- Remap up/down for dealing with word wrap
 set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
