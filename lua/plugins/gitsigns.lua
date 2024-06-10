@@ -27,11 +27,8 @@ return {
           end
         end)
 
-        map("n", "<leader>hp", gitsigns.preview_hunk)
-        map("n", "<leader>hr", gitsigns.reset_hunk)
-        map("n", "<leader>hb", function()
-          gitsigns.blame_line { full = true }
-        end)
+        map("n", "<leader>ghp", gitsigns.preview_hunk_inline)
+        map("n", "<leader>ghr", gitsigns.reset_hunk)
       end,
     }
   end,
