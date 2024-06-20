@@ -5,8 +5,17 @@ return {
     "tpope/vim-rhubarb",
   },
   lazy = false,
-  keys = {
-    { "<leader>gs", "<CMD>:vertical rightbelow Git<CR>" },
-    { "<leader>gl", "<CMD>:vertical rightbelow Git log --graph --oneline --decorate<CR>" },
-  },
+  config = function()
+    vim.keymap.set("n", "<leader>gs", "<CMD>:tab Git<CR>")
+    vim.keymap.set("n", "<leader>gl", "<CMD>:tab Git log --graph --oneline --decorate<CR>")
+
+    vim.api.nvim_create_autocmd("FileType", {
+      pattern = { "fugitive", "git" },
+      callback = function()
+        vim.schedule(function()
+          vim.keymap.set("n", "q", "<C-w>q", { buffer = true })
+        end)
+      end,
+    })
+  end,
 }
