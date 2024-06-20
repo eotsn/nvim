@@ -1,6 +1,6 @@
 return {
   "tpope/vim-fugitive",
-  depends = {
+  dependencies = {
     -- GitHub extension for fugitive.vim
     "tpope/vim-rhubarb",
   },
