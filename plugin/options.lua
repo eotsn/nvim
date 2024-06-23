@@ -8,6 +8,7 @@ opt.cursorline = true
 -- Enable relative line numbers
 opt.number = true
 opt.relativenumber = true
+opt.statuscolumn = "%s%=%{v:relnum?v:relnum:v:lnum} "
 
 -- Enable mouse mode
 opt.mouse = "a"
