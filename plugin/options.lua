@@ -13,7 +13,7 @@ opt.relativenumber = true
 opt.mouse = "a"
 
 -- Show some invisible characters (tabs...
-opt.list = true
+opt.list = false
 opt.listchars = "tab:» ,space:·,trail:-,nbsp:+"
 
 -- Always show the signcolumn
