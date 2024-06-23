@@ -1,4 +1,4 @@
-; extends
+;; extends
 
 ([
   (raw_string_literal)
@@ -9,8 +9,8 @@
   (#set! language "sql"))
 
 ([
-   (raw_string_literal)
-   (interpreted_string_literal)
+  (raw_string_literal)
+  (interpreted_string_literal)
 ] @injection.content
   (#match? @injection.content "(CREATE|ALTER|DROP|TRUNCATE).+(TABLE)?")
   (#offset! @injection.content 0 1 0 -1)
