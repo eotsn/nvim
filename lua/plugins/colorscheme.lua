@@ -4,12 +4,12 @@ return {
   priority = 1000,
   config = function()
     require("modus-themes").setup {
-      style = "modus_operandi",
+      variant = "tinted",
       on_highlights = function(highlights, colors)
         highlights.Whitespace = { fg = colors.bg_dim }
       end,
     }
 
-    vim.cmd.colorscheme "modus"
+    vim.cmd.colorscheme "modus_operandi"
   end,
 }
