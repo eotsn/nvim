@@ -194,7 +194,7 @@
             :opts {:variant :tinted
                    :on_highlights #(set $1.Whitespace {:fg $2.bg_dim})}
             :init (fn []
-                    (vim.cmd.colorscheme :modus_operandi)))
+                    (vim.cmd.colorscheme :modus_vivendi)))
 
      (plug! :stevearc/oil.nvim
             :lazy false
