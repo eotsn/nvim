@@ -1,19 +1,18 @@
 return {
-  "ibhagwan/fzf-lua",
-  config = function()
-    local fzf = require "fzf-lua"
-
-    fzf.setup {
+  {
+    "ibhagwan/fzf-lua",
+    keys = {
+      { "<leader>sf", "<Cmd>:FzfLua files<CR>" },
+      { "<leader>sg", "<Cmd>:FzfLua live_grep<CR>" },
+      { "<leader>sh", "<Cmd>:FzfLua helptags<CR>" },
+      { "<leader>sr", "<Cmd>:FzfLua resume<CR>" },
+    },
+    opts = {
       winopts = {
         split = "belowright new",
         preview = { hidden = "hidden" },
       },
       grep = { rg_glob = true },
-    }
-
-    vim.keymap.set("n", "<leader>sf", fzf.files)
-    vim.keymap.set("n", "<leader>sg", fzf.live_grep)
-    vim.keymap.set("n", "<leader>sh", fzf.helptags)
-    vim.keymap.set("n", "<leader>sr", fzf.resume)
-  end,
+    },
+  },
 }

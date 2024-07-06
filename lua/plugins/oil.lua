@@ -1,15 +1,19 @@
 return {
-  "stevearc/oil.nvim",
-  config = function()
-    require("oil").setup {
+  {
+    "stevearc/oil.nvim",
+    keys = {
+      { "-", "<Cmd>Oil<CR>" },
+    },
+    opts = {
       columns = {
         "permissions",
         "size",
         "mtime",
         "icon",
       },
-    }
-
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-  end,
+      view_options = {
+        show_hidden = true,
+      },
+    },
+  },
 }

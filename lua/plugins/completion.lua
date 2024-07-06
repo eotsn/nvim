@@ -1,47 +1,52 @@
 return {
-  "hrsh7th/nvim-cmp",
-  event = "InsertEnter",
-  dependencies = {
-    "hrsh7th/cmp-nvim-lsp",
-    "hrsh7th/cmp-nvim-lsp-signature-help",
-    "hrsh7th/cmp-buffer",
-    "hrsh7th/cmp-path",
-    { "L3MON4D3/LuaSnip", build = "make install_jsregexp" },
-    "saadparwaiz1/cmp_luasnip",
+  {
+    "hrsh7th/nvim-cmp",
+    event = "InsertEnter",
+    dependencies = {
+      "onsails/lspkind.nvim",
+
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lsp-signature-help",
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+    },
+    config = function()
+      vim.opt.completeopt = "menu,menuone,noselect"
+
+      local cmp = require "cmp"
+      local lspkind = require "lspkind"
+
+      cmp.setup {
+        sources = cmp.config.sources({
+          { name = "nvim_lsp" },
+          { name = "nvim_lsp_signature_help" },
+          { name = "path" },
+        }, {
+          { name = "buffer" },
+        }),
+        mapping = {
+          ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+          ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+          ["<C-y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
+        },
+        snippet = {
+          expand = function(args)
+            vim.snippet.expand(args.body)
+          end,
+        },
+        ---@diagnostic disable-next-line: missing-fields
+        formatting = {
+          format = lspkind.cmp_format { mode = "symbol_text" },
+        },
+      }
+
+      vim.keymap.set({ "i", "s" }, "<C-k>", function()
+        return vim.snippet.active { direction = 1 } and vim.snippet.jump(1)
+      end, { silent = true })
+
+      vim.keymap.set({ "i", "s" }, "<C-j>", function()
+        return vim.snippet.active { direction = -1 } and vim.snippet.jump(-1)
+      end, { silent = true })
+    end,
   },
-  config = function()
-    vim.opt.completeopt = "menu,menuone,noselect"
-
-    local cmp = require "cmp"
-    local luasnip = require "luasnip"
-
-    cmp.setup {
-      sources = cmp.config.sources({
-        { name = "nvim_lsp" },
-        { name = "nvim_lsp_signature_help" },
-        { name = "luasnip" },
-        { name = "path" },
-      }, {
-        { name = "buffer" },
-      }),
-
-      snippet = {
-        expand = function(args)
-          luasnip.lsp_expand(args.body)
-        end,
-      },
-    }
-
-    vim.keymap.set({ "i", "s" }, "<C-k>", function()
-      if luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      end
-    end, { silent = true })
-
-    vim.keymap.set({ "i", "s" }, "<C-j>", function()
-      if luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      end
-    end, { silent = true })
-  end,
 }
