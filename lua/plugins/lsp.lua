@@ -43,6 +43,7 @@ return {
                 rangeVariableTypes = true,
               },
               staticcheck = true,
+              semanticTokens = true,
             },
           },
         },
