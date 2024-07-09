@@ -17,6 +17,8 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = ","
 vim.g.localmapleader = "\\"
 
+vim.opt.termguicolors = true -- True color support
+
 vim.opt.number = true -- Show line numbers
 vim.opt.relativenumber = true -- Show relative line numbers
 
