@@ -36,6 +36,8 @@ vim.opt.inccommand = "split" -- Preview off-screen results
 vim.opt.cursorline = true -- Highlight the current line ...
 vim.opt.cursorlineopt = "number" -- ... but only the line number
 
+vim.opt.undofile = true -- Save undo history
+
 -- Integrate ThePrimeagen's fzf-powered tmux session manager
 vim.keymap.set("n", "<C-f>", "<CMD>silent !tmux neww tmux-sessionizer<CR>")
 
