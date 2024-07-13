@@ -1,7 +1,7 @@
 return {
   {
     "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
+    event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
       "onsails/lspkind.nvim",
 
@@ -25,8 +25,20 @@ return {
           { name = "buffer" },
         }),
         mapping = {
-          ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-          ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
+          ["<C-n>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_next_item { behavior = cmp.SelectBehavior.Insert }
+            else
+              cmp.complete()
+            end
+          end, { "i", "s", "c" }),
+          ["<C-p>"] = cmp.mapping(function()
+            if cmp.visible() then
+              cmp.select_prev_item { behavior = cmp.SelectBehavior.Insert }
+            else
+              cmp.complete()
+            end
+          end, { "i", "s", "c" }),
           ["<C-y>"] = cmp.mapping.confirm { behavior = cmp.ConfirmBehavior.Insert, select = true },
         },
         snippet = {
