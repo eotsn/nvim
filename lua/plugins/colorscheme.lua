@@ -8,7 +8,7 @@ return {
       vim.cmd.colorscheme "tokyobones"
 
       local lush = require "lush"
-      local base = require "zenbones"
+      local base = require "tokyobones"
       local specs = lush.parse(function()
         return {
           ---@diagnostic disable-next-line: undefined-global
