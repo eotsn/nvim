@@ -3,8 +3,6 @@ return {
     "hrsh7th/nvim-cmp",
     event = { "InsertEnter", "CmdlineEnter" },
     dependencies = {
-      "onsails/lspkind.nvim",
-
       "hrsh7th/cmp-nvim-lsp",
       "hrsh7th/cmp-nvim-lsp-signature-help",
       "hrsh7th/cmp-buffer",
@@ -13,7 +11,6 @@ return {
     config = function()
       vim.opt.completeopt = "menu,menuone,noselect"
 
-      local lspkind = require "lspkind"
       local cmp = require "cmp"
 
       cmp.setup {
@@ -45,10 +42,6 @@ return {
           expand = function(args)
             vim.snippet.expand(args.body)
           end,
-        },
-        ---@diagnostic disable-next-line: missing-fields
-        formatting = {
-          format = lspkind.cmp_format { mode = "symbol_text" },
         },
       }
 
