@@ -9,6 +9,7 @@ return {
     },
     opts = {
       winopts = {
+        backdrop = false,
         split = "belowright new",
         preview = { hidden = "hidden" },
       },
