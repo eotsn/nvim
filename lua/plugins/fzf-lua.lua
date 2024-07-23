@@ -13,6 +13,12 @@ return {
         split = "belowright new",
         preview = { hidden = "hidden" },
       },
+      keymap = {
+        builtin = {
+          true, -- Inherit default bindings
+          ["<C-p>"] = "toggle-preview",
+        },
+      },
       grep = { rg_glob = true },
     },
   },
