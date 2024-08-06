@@ -19,9 +19,6 @@ vim.g.localmapleader = "\\"
 
 vim.opt.termguicolors = true -- True color support
 
-vim.opt.number = true -- Show line numbers
-vim.opt.relativenumber = true -- Show relative line numbers
-
 vim.opt.splitbelow = true -- Put new windows below the current
 vim.opt.splitright = true -- Put new windows right of the current
 
@@ -38,6 +35,9 @@ vim.opt.cursorline = true -- Highlight the current line ...
 vim.opt.cursorlineopt = "number" -- ... but only the line number
 
 vim.opt.undofile = true -- Save undo history
+
+-- Toggle (relative) line numbers
+vim.keymap.set("n", "<leader>n", "<Cmd>set nu! rnu!<CR>")
 
 -- Integrate ThePrimeagen's fzf-powered tmux session manager
 vim.keymap.set("n", "<C-f>", "<CMD>silent !tmux neww tmux-sessionizer<CR>")
