@@ -29,7 +29,6 @@ vim.opt.ignorecase = true -- Ignore case in search patterns ...
 vim.opt.smartcase = true -- ... unless it contains capital characters
 
 vim.opt.signcolumn = "yes" -- Always draw the signcolumn
-vim.opt.colorcolumn = "80" -- Show visual guide(s) to help with aligment
 
 vim.opt.inccommand = "split" -- Preview off-screen results
 
