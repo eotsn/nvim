@@ -39,9 +39,6 @@ vim.opt.undofile = true -- Save undo history
 -- Toggle (relative) line numbers
 vim.keymap.set("n", "<leader>n", "<Cmd>set nu! rnu!<CR>")
 
--- Integrate ThePrimeagen's fzf-powered tmux session manager
-vim.keymap.set("n", "<C-f>", "<CMD>silent !tmux neww tmux-sessionizer<CR>")
-
 -- Remap up/down for dealing with word wrap
 vim.keymap.set({ "n", "x" }, "j", "v:count == 0 ? 'gj' : 'j'", { expr = true, silent = true })
 vim.keymap.set({ "n", "x" }, "k", "v:count == 0 ? 'gk' : 'k'", { expr = true, silent = true })
