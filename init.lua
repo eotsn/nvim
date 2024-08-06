@@ -32,6 +32,8 @@ vim.opt.signcolumn = "yes" -- Always draw the signcolumn
 
 vim.opt.inccommand = "split" -- Preview off-screen results
 
+vim.opt.scrolloff = 4 -- Keep your cursor from edging
+
 vim.opt.cursorline = true -- Highlight the current line ...
 vim.opt.cursorlineopt = "number" -- ... but only the line number
 
