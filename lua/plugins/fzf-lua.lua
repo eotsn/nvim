@@ -16,7 +16,7 @@ return {
       keymap = {
         builtin = {
           true, -- Inherit default bindings
-          ["<C-p>"] = "toggle-preview",
+          ["<M-p>"] = "toggle-preview",
         },
       },
       grep = { rg_glob = true },
