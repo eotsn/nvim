@@ -14,4 +14,9 @@ return {
     event = { "BufReadPost", "BufNewFile" },
     opts = {},
   },
+  {
+    "folke/ts-comments.nvim",
+    event = "VeryLazy",
+    opts = {},
+  },
 }
