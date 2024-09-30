@@ -10,6 +10,9 @@ return {
     local cmp = require "cmp"
 
     cmp.setup {
+      completion = {
+        autocomplete = false,
+      },
       sources = cmp.config.sources({
         { name = "nvim_lsp" },
         { name = "path" },
@@ -19,7 +22,16 @@ return {
       mapping = {
         ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
         ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-        ["<C-i>"] = cmp.mapping.confirm { select = true },
+        ["<C-i>"] = cmp.mapping(function()
+          if cmp.visible() then
+            cmp.confirm { select = true }
+          else
+            cmp.complete()
+            if #cmp.get_entries() == 1 then
+              cmp.confirm { select = true }
+            end
+          end
+        end, { "i", "s" }),
       },
       snippet = {
         expand = function(args)
