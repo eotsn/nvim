@@ -25,6 +25,7 @@ return {
           },
         },
       },
+      emmet_language_server = {},
       vtsls = {
         settings = {
           vtsls = {
